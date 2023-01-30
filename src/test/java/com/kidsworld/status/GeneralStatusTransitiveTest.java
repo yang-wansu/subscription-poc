@@ -1,6 +1,5 @@
 package com.kidsworld.status;
 
-import com.kidsworld.subscription.domain.SubscriptionTransitiveHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,20 +15,21 @@ public class GeneralStatusTransitiveTest {
 
 	@BeforeEach
 	void setUp() {
-		sut.define(new StatusName[]{StatusName.first()}, someTransitive, mock(TransitiveHandler.class));
-		sut.define(new StatusName[]{StatusName.first() , StatusName.of("someStatus") }, someTransitive, new SubscriptionTransitiveHandler());
+		sut.define(someTransitive, new StatusName[]{StatusName.first() , StatusName.of("someStatus") }, mock(TransitiveHandler.class));
 	}
 
 	@Test
-	void name() {
+	void validate() {
 		assertDoesNotThrow(()->sut.validate(someTransitive, StatusName.first()));
 		assertThrows(StatusTransitiveException.class,
 				() -> sut.validate(someTransitive, StatusName.of("illegal Status")));
-	}
-
-	@Test
-	void name2() {
 		assertDoesNotThrow(()->sut.validate(someTransitive, StatusName.first()));
 		assertDoesNotThrow(()->sut.validate(someTransitive, StatusName.of("someStatus")));
+	}
+
+
+	@Test
+	void handler() {
+		//sut.handle(someTransitive, )
 	}
 }

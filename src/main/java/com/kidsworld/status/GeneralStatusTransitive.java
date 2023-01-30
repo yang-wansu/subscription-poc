@@ -37,7 +37,7 @@ public class GeneralStatusTransitive implements StatusTransitive {
 	}
 
 	@Override
-	public StatusTransitive define(StatusName[] beginStatus, TransitiveName transitiveName, TransitiveHandler transitiveHandler) {
+	public StatusTransitive define(TransitiveName transitiveName, StatusName[] beginStatus, TransitiveHandler transitiveHandler) {
 		this.defines.put(transitiveName, TransitiveDefinition.of(transitiveName, beginStatus, transitiveHandler));
 		return this;
 	}

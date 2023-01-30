@@ -29,7 +29,7 @@ class SubscriptionTest {
 	@BeforeEach
 	void setUp() {
 		transitive = new GeneralStatusTransitive();
-		transitive.define(new StatusName[]{StatusName.of("READY"), StatusName.of("INVALID_USER")}, TransitiveName.of("subscribe"), new SubscriptionTransitiveHandler());
+		transitive.define(TransitiveName.of("subscribe"), new StatusName[]{StatusName.of("READY"), StatusName.of("INVALID_USER")}, new SubscriptionTransitiveHandler());
 		sut = new Subscription();
 
 		assertThat(sut.getStatus()).isEqualTo(READY);

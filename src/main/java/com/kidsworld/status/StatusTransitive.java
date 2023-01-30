@@ -8,5 +8,5 @@ public interface StatusTransitive {
 
 	Status handle(TransitiveName transitiveName, SubscriptionUser user);
 
-	StatusTransitive define(StatusName[] beginStatus, TransitiveName transitiveName, TransitiveHandler transitiveHandler);
+	StatusTransitive define(TransitiveName transitiveName, StatusName[] beginStatus, TransitiveHandler transitiveHandler);
 }
