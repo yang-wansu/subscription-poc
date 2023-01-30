@@ -1,9 +1,6 @@
 package com.kidsworld.subscription.domain;
 
-import com.kidsworld.status.GeneralStatusTransitive;
-import com.kidsworld.status.StatusName;
-import com.kidsworld.status.StatusTransitive;
-import com.kidsworld.status.TransitiveName;
+import com.kidsworld.status.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -62,7 +59,7 @@ class SubscriptionTest {
 		sut.doProcess("subscribe",transitive,user);
 		assertThat(sut.getStatus()).isEqualTo(SUBSCRIBED);
 
-		assertThatExceptionOfType(SubscribeRuntimeException.class)
+		assertThatExceptionOfType(StatusTransitiveException.class)
 
 				.isThrownBy(()->sut.doProcess("subscribe",transitive,user));
 

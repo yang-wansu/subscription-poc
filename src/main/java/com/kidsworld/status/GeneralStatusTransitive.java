@@ -31,9 +31,9 @@ public class GeneralStatusTransitive implements StatusTransitive {
 	}
 
 	@Override
-	public Status handle(TransitiveName transitiveName, SubscriptionUser user) {
+	public StatusName handle(TransitiveName transitiveName, Object ... args) {
 		TransitiveDefinition definition = this.defines.get(transitiveName);
-		return definition.getTransitiveHandler().handle(user);
+		return definition.getTransitiveHandler().handle(args);
 	}
 
 	@Override

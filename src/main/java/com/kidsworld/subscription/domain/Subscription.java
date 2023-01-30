@@ -13,18 +13,18 @@ public class Subscription {
 	private Status status;
 
 	Subscription() {
-		setStatus(READY);
+		setStatus(StatusName.of(READY.name()));
 	}
 
 	public void doProcess(String process, StatusTransitive transitive, SubscriptionUser user) {
 		transitive.validate(TransitiveName.of(process), StatusName.of(getStatus().name()));
 
-		final Status next = transitive.handle(TransitiveName.of(process), user);
+		final StatusName next = transitive.handle(TransitiveName.of(process), user);
 
 		setStatus(next);
 	}
 
-	private void setStatus(Status status) {
-		this.status = status;
+	private void setStatus(StatusName statusName) {
+		this.status = Status.valueOf(statusName.getValue());
 	}
 }
